@@ -1,0 +1,57 @@
+<%= form_with(model: pickup) do |form| %>
+  <% if pickup.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pickup.errors.count, "error") %> prohibited this pickup from being saved:</h2>
+
+      <ul>
+        <% pickup.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :pickup_date, style: "display: block" %>
+    <%= form.date_field :pickup_date %>
+  </div>
+
+  <div>
+    <%= form.label :location_name, style: "display: block" %>
+    <%= form.text_field :location_name %>
+  </div>
+
+  <div>
+    <%= form.label :street_address, style: "display: block" %>
+    <%= form.text_field :street_address %>
+  </div>
+
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :country, style: "display: block" %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
