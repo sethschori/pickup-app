@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_29_220629) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_29_224609) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_220629) do
     t.index ["authenticatable_type", "authenticatable_id"], name: "authenticatable"
   end
 
+  create_table "pickups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "pickup_date", null: false
+    t.string "location_name"
+    t.string "street_address", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "country", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pickups_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -35,4 +49,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_220629) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "pickups", "users"
 end
