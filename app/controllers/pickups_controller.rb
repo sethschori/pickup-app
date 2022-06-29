@@ -23,7 +23,7 @@ class PickupsController < ApplicationController
 
   # POST /pickups
   def create
-    @pickup = Pickup.new(pickup_params)
+    @pickup = Pickup.new(user: current_user, **pickup_params)
 
     if @pickup.save
       redirect_to @pickup, notice: "Pickup was successfully created."
