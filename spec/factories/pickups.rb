@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :pickup do
-    user
+    association :user, factory: :user
     pickup_date { "2022-06-29" }
     location_name { "MyLocationName" }
     street_address { "MyStreetAddress" }

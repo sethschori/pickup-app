@@ -1,6 +1,8 @@
 class Pickup < ApplicationRecord
   belongs_to :user
 
+  before_validation :pickup_not_in_past, on: [:create, :update]
+  
   enum status: {
     submitted: 0,  # database default
     accepted: 1,
@@ -8,4 +10,9 @@ class Pickup < ApplicationRecord
     completed: 3
   }
 
+  def pickup_not_in_past
+    if self.pickup_date < Date.today
+      self.errors.add(:pickup_date, "The pickup date can not be in the past")
+    end
+  end
 end
