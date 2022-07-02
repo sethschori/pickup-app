@@ -5,7 +5,9 @@ ruby "3.1.2"
 
 gem "rails", "~> 7.0.3"
 
+gem 'bootstrap', '~> 5.1.3'
 gem 'capybara'
+gem 'importmap-rails'
 gem 'passwordless', git: "https://github.com/mikker/passwordless.git", branch: "master"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
