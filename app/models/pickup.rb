@@ -11,8 +11,8 @@ class Pickup < ApplicationRecord
   }
 
   def pickup_not_in_past
-    if self.pickup_date < Date.today
-      self.errors.add(:pickup_date, "The pickup date can not be in the past")
+    if self.pickup_date.blank? || self&.pickup_date < Date.today
+      self.errors.add(:pickup_date, "must be set and can not be in the past")
     end
   end
 end
