@@ -3,12 +3,34 @@
 <h1>Pickups</h1>
 
 <div id="pickups">
-  <% @pickups.each do |pickup| %>
-    <%= render pickup %>
-    <p>
-      <%= link_to "Show this pickup", pickup %>
-    </p>
-  <% end %>
+  <table class="table table-striped">
+    <thead>
+      <th scope="col">User</th>
+      <th scope="col">Pickup date</th>
+      <th scope="col">Location name</th>
+      <th scope="col">Street address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Country</th>
+      <th scope="col">Status</th>
+      <th scope="col">Link</th>
+    </thead>
+    <tbody>
+      <% @pickups.each do |pickup| %>
+        <tr scope=row>
+          <td><%= pickup.user.email %></td>
+          <td><%= pickup.pickup_date %></td>
+          <td><%= pickup.location_name %></td>
+          <td><%= pickup.street_address %></td>
+          <td><%= pickup.city %></td>
+          <td><%= pickup.state %></td>
+          <td><%= pickup.country %></td>
+          <td><%= pickup.status&.titleize %></td>
+          <td><%= link_to "Show/manage pickup", pickup %></td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
 </div>
 
-<%= link_to "New pickup", new_pickup_path %>
+<%= link_to "Add a pickup", new_pickup_path, class: "btn btn-primary" %>
