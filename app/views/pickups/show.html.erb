@@ -3,8 +3,7 @@
 <%= render @pickup %>
 
 <div>
-  <%= link_to "Edit this pickup", edit_pickup_path(@pickup) %> |
-  <%= link_to "Back to pickups", pickups_path %>
-
-  <%= button_to "Destroy this pickup", @pickup, method: :delete %>
+  <%= link_to "Edit this pickup", edit_pickup_path(@pickup), class: 'btn btn-primary mb-2' %>
+  <%= link_to "Back to pickups", pickups_path, class: 'btn btn-primary mb-2' %>
+  <%= button_to "Destroy this pickup", @pickup, method: :delete, class: 'btn btn-danger mb-2' %>
 </div>
