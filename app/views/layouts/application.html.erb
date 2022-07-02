@@ -11,6 +11,31 @@
   </head>
 
   <body class='container'>
+    <nav class="navbar container navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="/">Pickups App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if current_user.present? %>
+            <li class="nav-item">
+              <%= link_to "My pickups", pickups_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign out (#{current_user.email})", users.sign_out_path, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign in', users.sign_in_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign up', '/users/new', class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
